@@ -3,6 +3,11 @@ var router = express.Router();
 const multer = require("multer");
 const uploads = multer({dest:'public/uploads'});
 
+function isAuth(req,res, next){
+	if(req.isAuthenticated()) return next();
+	res.json("No has iniciado sesión");
+}
+
 router.post('/single', uploads.single('one'), (req,res)=>{
 	res.json('http://localhost:3000/uploads/'+req.file.filename);
 });
@@ -16,6 +21,7 @@ router.post('/array', uploads.array('photos'), (req,res)=>{
 });
 
 router.post('/multiple', 
+	isAuth,
 	uploads.fields([
 			{name:'profilePic', maxCount:1},
 			{name:'galery', maxCount:12}

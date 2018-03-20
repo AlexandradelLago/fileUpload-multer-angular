@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FileService} from './services/file.service';
+import {SessionService} from './services/session.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,17 @@ import {FileService} from './services/file.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private fileService:FileService){}
+  constructor(
+    private fileService:FileService,
+    private session:SessionService
+  ){}
   title = 'app';
   formData = new FormData();
+
+  onLogin(form){
+    this.session.login(form.value)
+    .subscribe(res=>console.log(res));
+  }
 
   onSubmit(form){
     const keys = Object.keys(form.value);

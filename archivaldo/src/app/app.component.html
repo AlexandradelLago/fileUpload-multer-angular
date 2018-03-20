@@ -1,7 +1,7 @@
 <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" >
   <input type="text" placeholder="email" name="email" ngModel/>
   <br>
-  <input multiple type="file" name="" (change)="manageFile($event)"/>
+  <input multiple type="file" name="galery" (change)="manageFile($event)"/>
   <br>
   <input type="text" placeholder="genre" />
   <br>
@@ -15,5 +15,11 @@
     <option value="2">mijito</option>
   </select>
   <br>
+  <input type="submit">
+</form>
+
+<form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+  <input ngModel type="text" placeholder="email" name="email">
+  <input ngModel type="password" placeholder="password" name="password">
   <input type="submit">
 </form>

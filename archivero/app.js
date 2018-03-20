@@ -8,8 +8,29 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+//mongoose
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost/archivaldo");
+const session = require("express-session");
+
 var app = express();
-app.use(require("cors")());
+const options = {
+  credentials:true,
+  origin:true
+}
+app.use(require("cors")(options));
+
+app.use(session({
+  secret: 'bliss',
+  resave: true,
+  saveUninitialized: true,
+  cookie : { httpOnly: true, maxAge: 2419200000 }
+}));
+//passport
+const passport = require("passport");
+require('./helpers/passport');
+app.use(passport.initialize());
+app.use(passport.session());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 
 //services
 import {FileService} from './services/file.service';
-
+import {SessionService} from './services/session.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import {FileService} from './services/file.service';
     FormsModule,
     HttpModule
   ],
-  providers: [FileService],
+  providers: [FileService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

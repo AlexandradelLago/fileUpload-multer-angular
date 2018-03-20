@@ -23,7 +23,7 @@ export class FileService {
   }
 
   multipleFiles(formData){
-    return this.http.post('http://localhost:3000/multiple', formData)
+    return this.http.post('http://localhost:3000/multiple', formData, {withCredentials:true})
     .map(res=>res.json())
     .catch(e=>Observable.throw(e));
   }
