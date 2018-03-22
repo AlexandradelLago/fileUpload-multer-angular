@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import {FileService} from './services/file.service';
 import {SessionService} from './services/session.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+
 
 @Component({
   selector: 'app-root',
@@ -10,8 +12,12 @@ import {SessionService} from './services/session.service';
 export class AppComponent {
   constructor(
     private fileService:FileService,
-    private session:SessionService
-  ){}
+    private session:SessionService,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
+  ){
+    this.toastr.setRootViewContainerRef(vcr);
+  }
   title = 'app';
   formData = new FormData();
 
@@ -21,6 +27,8 @@ export class AppComponent {
   }
 
   onSubmit(form){
+    this.toastr.success('Bienvenido =D', 'Success!');
+
     const keys = Object.keys(form.value);
     for(let key of keys){
       this.formData.append(key, form.value[key]);

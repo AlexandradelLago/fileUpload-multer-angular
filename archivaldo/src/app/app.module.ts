@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import {FileService} from './services/file.service';
 import {SessionService} from './services/session.service';
 
+//toastr
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +21,9 @@ import {SessionService} from './services/session.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ToastModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [FileService, SessionService],
   bootstrap: [AppComponent]
