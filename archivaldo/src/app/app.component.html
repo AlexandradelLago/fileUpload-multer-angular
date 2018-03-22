@@ -19,6 +19,7 @@
 </form>
 
 <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+  <h3 style="color:red">{{error}}</h3>
   <input ngModel type="text" placeholder="email" name="email">
   <input ngModel type="password" placeholder="password" name="password">
   <input type="submit">

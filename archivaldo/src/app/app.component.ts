@@ -20,10 +20,13 @@ export class AppComponent {
   }
   title = 'app';
   formData = new FormData();
-
+  error;
   onLogin(form){
     this.session.login(form.value)
-    .subscribe(res=>console.log(res));
+    .subscribe(res=>{
+      this.error = "estas jodido";
+      console.log(res)
+    });
   }
 
   onSubmit(form){

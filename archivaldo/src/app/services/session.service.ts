@@ -18,6 +18,7 @@ export class SessionService {
   login(auth){
     return this.http.post(`${this.BASE_URL}/login`, auth, {withCredentials:true})
     .map(res=>{
+      this.toastr.success('Entraste', "Bienvenido");
       return res.json()
     })
     .catch(e=>{
